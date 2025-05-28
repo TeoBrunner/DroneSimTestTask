@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6cb9532cb8d50448520ee27a2628aa, type: 3}
   m_Name: SettingsInstaller
   m_EditorClassIdentifier: 
-  defaultSettings: {fileID: 11400000, guid: 45c9592af9f363540b6ebe0099ecab7a, type: 2}
   currentSettings: {fileID: 11400000, guid: 1f3ad842e12a46c488fea0419569e37f, type: 2}
+  defaultSettings: {fileID: 11400000, guid: 45c9592af9f363540b6ebe0099ecab7a, type: 2}
+  otherSettings: {fileID: 11400000, guid: 68d8e4444cf678f40b4e51cdba595e87, type: 2}

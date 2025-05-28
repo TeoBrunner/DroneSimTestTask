@@ -4,24 +4,27 @@ using Zenject;
 public class DroneBase : MonoBehaviour
 {
     private SignalBus signalBus;
-    private GameSettingsManager gameSettingsManager;
+    private SettingsManager SettingsManager;
     private DroneFactory droneFactory;
+    private Transform redParent;
+    private Transform blueParent;
 
-
-    [Header("Settings")]
-    [SerializeField] Team team;
-    [SerializeField] float spawnRadius = 2;
+    private Team team;
     [Header("Visuals")]
     [SerializeField] MeshRenderer bodyRenderer;
 
     [Inject]
-    private void Construct(SignalBus signalBus, 
-                           GameSettingsManager gameSettingsManager,
-                           DroneFactory droneFactory)
+    private void Construct(SignalBus signalBus,
+                           SettingsManager SettingsManager,
+                           DroneFactory droneFactory,
+                           [Inject(Id = "RedParent")] Transform redParent,
+                           [Inject(Id = "BlueParent")] Transform blueParent)
     {
         this.signalBus = signalBus;
-        this.gameSettingsManager = gameSettingsManager;
+        this.SettingsManager = SettingsManager;
         this.droneFactory = droneFactory;
+        this.redParent = redParent;
+        this.blueParent = blueParent;
     }
 
     void Start()
@@ -43,19 +46,29 @@ public class DroneBase : MonoBehaviour
     private void SpawnDrones()
     {
         Vector3[] spawnPoints = GetSpawnPoints();
+        Transform parent = null;
+
+        if(team == Team.Red)
+        {
+            parent = redParent;
+        }
+        if(team == Team.Blue)
+        {
+            parent = blueParent;
+        }
 
         foreach (Vector3 spawnPoint in spawnPoints) 
         {
-
             DroneAI drone =  droneFactory.Create(team);
-            drone.transform.parent = transform;
+            drone.transform.parent = parent;
             drone.transform.position = spawnPoint;
         }
     }
 
     private Vector3[] GetSpawnPoints()
     {
-        int teamSize = gameSettingsManager.DronesPerTeam;
+        int teamSize = SettingsManager.DronesPerTeam;
+        float spawnRadius = SettingsManager.Other.DroneSpawnRadius;
         Vector3[] spawnPoints = new Vector3[teamSize];
         for (int i = 0; i < teamSize; i++)
         {

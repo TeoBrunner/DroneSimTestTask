@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dronesPerTeam: 3
   droneSpeed: 5
-  resourceSpawnCooldown: 0.5
+  resourceSpawnCooldown: 1
   showDronePath: 1
   showTeamScore: 1

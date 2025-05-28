@@ -15,14 +15,14 @@ public class GameSettingsUIHandler : MonoBehaviour
     [SerializeField] Toggle showTeamScore;
     [SerializeField] Button resetToDefaultButton;
 
-    private GameSettingsManager gameSettingsManager;
+    private SettingsManager SettingsManager;
     private SignalBus signalBus;
 
     [Inject]
-    private void Construct(GameSettingsManager gameSettingsManager, 
+    private void Construct(SettingsManager SettingsManager, 
                            SignalBus signalBus)
     {
-        this.gameSettingsManager = gameSettingsManager;
+        this.SettingsManager = SettingsManager;
         this.signalBus = signalBus;
     }
     private void Start()
@@ -57,55 +57,55 @@ public class GameSettingsUIHandler : MonoBehaviour
         dronesPerTeamSlider.minValue = 1;
         dronesPerTeamSlider.maxValue = 5;
         dronesPerTeamSlider.wholeNumbers = true;
-        dronesPerTeamSlider.value = gameSettingsManager.DronesPerTeam;
-        dronesPerTeamIndicator.text = gameSettingsManager.DronesPerTeam.ToString();
+        dronesPerTeamSlider.value = SettingsManager.DronesPerTeam;
+        dronesPerTeamIndicator.text = SettingsManager.DronesPerTeam.ToString();
 
         droneSpeedSlider.minValue = 1;
         droneSpeedSlider.maxValue = 10;
-        droneSpeedSlider.value = gameSettingsManager.DroneSpeed;
-        float droneSpeedRaw = gameSettingsManager.DroneSpeed;
+        droneSpeedSlider.value = SettingsManager.DroneSpeed;
+        float droneSpeedRaw = SettingsManager.DroneSpeed;
         float droneSpeedRound = Mathf.Round(droneSpeedRaw * 10) * 0.1f;
         droneSpeedIndicator.text = droneSpeedRound.ToString();
 
-        resourceSpawnCooldownField.text = gameSettingsManager.ResourceSpawnCooldown.ToString();
+        resourceSpawnCooldownField.text = SettingsManager.ResourceSpawnCooldown.ToString();
 
-        showDronePathToggle.isOn = gameSettingsManager.ShowDronePath;
+        showDronePathToggle.isOn = SettingsManager.ShowDronePath;
 
-        showTeamScore.isOn = gameSettingsManager.ShowTeamScore;
+        showTeamScore.isOn = SettingsManager.ShowTeamScore;
 
         SubscribeToUI();
     }
 
     private void OnDronesPerTeamChanged(float value)
     {
-        gameSettingsManager.SetDronesPerTeam((int)value);
+        SettingsManager.SetDronesPerTeam((int)value);
     }
     private void OnDroneSpeedChanged(float value)
     {
-        gameSettingsManager.SetDroneSpeed(value);
+        SettingsManager.SetDroneSpeed(value);
     }
     private void OnResourceSpawnCooldownChanged(string value)
     {
         if(float.TryParse(value, out float floatValue))
         {
-            gameSettingsManager.SetResourceSpawnCooldown(floatValue);
+            SettingsManager.SetResourceSpawnCooldown(floatValue);
         }
         else
         {
-            resourceSpawnCooldownField.text = gameSettingsManager.ResourceSpawnCooldown.ToString();
+            resourceSpawnCooldownField.text = SettingsManager.ResourceSpawnCooldown.ToString();
         }
     }
     private void OnShowDronePathChanged(bool value)
     {
-        gameSettingsManager.SetShowDronePath(value);
+        SettingsManager.SetShowDronePath(value);
     }
     private void OnShowTeamScoreChanged(bool value)
     {
-        gameSettingsManager.SetShowTeamScore(value);
+        SettingsManager.SetShowTeamScore(value);
     }
     private void OnResetToDefault()
     {
-        gameSettingsManager.ResetToDefault();
+        SettingsManager.ResetToDefault();
     }
 
 }

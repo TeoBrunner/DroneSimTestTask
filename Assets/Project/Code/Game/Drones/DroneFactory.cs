@@ -14,6 +14,7 @@ public class DroneFactory : PlaceholderFactory<Team, DroneAI>
     public override DroneAI Create(Team team)
     {
         DroneAI drone = diContainer.InstantiatePrefabForComponent<DroneAI>(dronePrefab);
+        drone.name = "Drone " + team.ToString();
         drone.Initialize(team);
 
         return drone;

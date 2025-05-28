@@ -10,6 +10,8 @@ public class SignalBusInstaller : ScriptableObjectInstaller<SignalBusInstaller>
 
         Container.DeclareSignal<GameSettingsChangedSignal>();
         Container.DeclareSignal<StartGameSignal>();
+        Container.DeclareSignal<ResourceSpawnedSignal>();
+        Container.DeclareSignal<ResourceDestroyedSignal>();
         Container.DeclareSignal<ScoreboardUpdateSignal>();
     }
 }

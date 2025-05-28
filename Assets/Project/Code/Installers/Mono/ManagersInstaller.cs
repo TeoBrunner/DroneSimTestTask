@@ -3,11 +3,13 @@ using Zenject;
 
 public class ManagersInstaller : MonoInstaller
 {
-    [SerializeField] GameSettingsManager gameSettingsManager;
-    [SerializeField] GameManager gameManager;
+    [SerializeField] SettingsManager gameSettingsManager;
+    [SerializeField] DronesManager dronesManager;
+    [SerializeField] ResourcesManager resourcesManager;
     public override void InstallBindings()
     {
         Container.BindInstance(gameSettingsManager);
-        Container.BindInstance(gameManager);
+        Container.BindInstance(dronesManager);
+        Container.BindInstance(resourcesManager);
     }
 }

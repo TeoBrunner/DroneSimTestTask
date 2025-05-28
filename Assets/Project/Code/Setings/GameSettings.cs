@@ -10,7 +10,4 @@ public class GameSettings : ScriptableObject
     public float resourceSpawnCooldown = 0.5f;
     public bool showDronePath = true;
     public bool showTeamScore = true;
-
-
-
 }

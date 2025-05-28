@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca9c3a586e8805443a112b7ab589b28a, type: 3}
-  m_Name: CurrentSettings
+  m_Script: {fileID: 11500000, guid: c045f7008b51f354c9807e39466bb3a3, type: 3}
+  m_Name: OtherSettings
   m_EditorClassIdentifier: 
-  dronesPerTeam: 4
-  droneSpeed: 5
-  resourceSpawnCooldown: 1
-  showDronePath: 1
-  showTeamScore: 0
+  droneSize: 0.6
+  resourceSize: 0.3
+  resourceSphereCastRadius: 0.5
