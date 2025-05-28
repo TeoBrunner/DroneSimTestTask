@@ -1822,6 +1822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ee9567bcb6b684581ec503c9734bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 7531503550432235470}
   dronesPerTeamSlider: {fileID: 1399886933825791990}
   dronesPerTeamIndicator: {fileID: 3848332901630727917}
   droneSpeedSlider: {fileID: 4265839815858082664}
